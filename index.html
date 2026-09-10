@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="MessageLoggerFix private review: an opt-in local BetterDiscord message log, with explicit privacy and compatibility limits.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <title>MessageLoggerFix · private review</title>
+  <style>
+    :root{--ink:#f6edf8;--muted:#b8aabc;--line:#3c3042;--accent:#dda6ff;--panel:#17111d;--warning:#ffc8a6;color-scheme:dark;font-family:system-ui,sans-serif;background:#0b090e;color:var(--ink)}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#2b153440,transparent 55%)}main{max-width:1040px;margin:auto;padding:48px 28px 72px}a{color:var(--accent);text-underline-offset:4px}a:hover{color:#fff}a:focus-visible{outline:2px solid var(--accent);outline-offset:5px;border-radius:3px}p,li{line-height:1.65}p{max-width:76ch}.eyebrow{color:var(--accent);font:12px ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase}.sigil{font-size:24px;color:var(--accent);margin:30px 0 15px}h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(38px,7vw,74px);line-height:1.04;letter-spacing:-.035em;margin:0 0 18px;overflow-wrap:anywhere}.intro{font-size:20px;color:var(--muted);max-width:58ch}.actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 40px}.button{padding:11px 17px;border:1px solid var(--line);border-radius:7px;text-decoration:none;background:var(--panel)}.button.primary{color:#1b0d24;background:var(--accent);border-color:var(--accent);font-weight:650}.warning{border:1px solid #785443;border-left:3px solid var(--warning);border-radius:8px;background:#241813;padding:20px 23px;margin:0 0 30px}.warning h2{color:var(--warning);margin-top:0}.warning p:last-child{margin-bottom:0}h2{font-family:Georgia,serif;font-weight:400;font-size:25px}h3{font-size:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:22px 24px;background:var(--panel);border:1px solid var(--line);border-radius:9px}.card h2{margin-top:0}.card p:last-child{margin-bottom:0}ul,ol{padding-left:22px}li+li{margin-top:9px}code{font-family:ui-monospace,monospace;font-size:.9em;overflow-wrap:anywhere;color:#ebcdf8}pre{padding:14px;border:1px solid var(--line);border-radius:6px;overflow:auto}.muted{color:var(--muted)}.receipt{margin-top:20px;padding-top:12px;border-top:1px solid var(--line)}footer{color:var(--muted);font-size:13px;margin-top:36px;padding-top:22px;border-top:1px solid var(--line)}@media(max-width:680px){main{padding:28px 18px 44px}.grid{grid-template-columns:1fr}.card{padding:18px}.intro{font-size:18px}}@media print{body{background:white;color:black}main{padding:0}.grid{display:block}.card,.warning{break-inside:avoid;background:none;border:1px solid #777;margin-bottom:15px}.actions{display:none}a,code,.muted,.intro,footer,.warning h2{color:inherit}}
+    .grid>*{min-width:0}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">lilyofashwood / private review / v1.0.0</p>
+    <p class="sigil" aria-label="Mutiny edition">☠︎ 𝗆𝐮𝗍𝐢𝗇𝗒 𝐞𝖽𝐢𝗍𝐢𝐨𝗇 ☠︎</p>
+    <h1>MessageLoggerFix</h1>
+    <p class="intro">A small local black box for edits, deletions, and ghost pings. The record only knows what this client actually saw.</p>
+    <nav class="actions" aria-label="Project files">
+      <a class="button primary" href="https://github.com/lilyofashwood/messageloggerfix-review/blob/main/messageloggerfix.plugin.js">Get plugin source on GitHub</a>
+      <a class="button" href="https://github.com/lilyofashwood/messageloggerfix-review/blob/main/README.md">Read the original README</a>
+      <a class="button" href="#review">Review the evidence</a>
+    </nav>
+  </header>
+  <aside class="warning" aria-labelledby="privacy-title">
+    <h2 id="privacy-title">The loot is plaintext.</h2>
+    <p>Enabling capture retains message text, including words someone later edits or deletes, on this computer. Local does not mean encrypted or harmless. Get permission from the people whose messages you retain; disabling capture does not erase existing logs or exported files.</p>
+    <p>BetterDiscord’s <a href="https://docs.betterdiscord.app/plugins/publishing/guidelines">current plugin guidelines</a> explicitly disallow message logging and access to deleted messages. This is an independent review build, <strong>not an approved BetterDiscord addon</strong>. Account and compatibility risks remain; private review does not remove them.</p>
+  </aside>
+  <div class="grid">
+    <section class="card" aria-labelledby="record-title">
+      <h2 id="record-title">What the record contains</h2>
+      <ul>
+        <li>Capture starts off. A separate explicit choice enables it.</li>
+        <li>Edits require a prior cached text snapshot and an actual content change.</li>
+        <li>A missing deleted message becomes an honest tombstone, not invented recovered text.</li>
+        <li>Direct mentions of the signed-in user identify deleted ghost pings.</li>
+        <li>Local search, event filters, JSON export, and confirmed clearing; four panel skins.</li>
+      </ul>
+      <p class="muted">The plugin has no network requests, telemetry, remote assets, updater, or plugin-library dependency. This page has no scripts and does not run the plugin.</p>
+    </section>
+    <section class="card" aria-labelledby="limits-title">
+      <h2 id="limits-title">What the record cannot promise</h2>
+      <ul>
+        <li>No recovery of messages the client never observed while capture was active.</li>
+        <li>Message text is clipped to 20,000 JavaScript string units; attachments and complete chat transcripts are not archived.</li>
+        <li>Defaults retain up to 1,000 events and 1,000 cached snapshots for 30 days. Oldest records are pruned to a 4 MiB serialized storage budget.</li>
+        <li>Age pruning runs during startup, mutations, or saves; it is not a secure-erasure timer.</li>
+        <li>Discord’s internal event interface can change. Missing subscriptions fail closed and report capture unavailable.</li>
+      </ul>
+    </section>
+    <section class="card" aria-labelledby="install-title">
+      <h2 id="install-title">Manual installation, after review</h2>
+      <p>No account or application is changed by opening this page.</p>
+      <ol>
+        <li>Review the source, privacy implications, and platform restrictions above.</li>
+        <li>With BetterDiscord already installed, place <code>messageloggerfix.plugin.js</code> in its plugins folder. On macOS: <code>~/Library/Application Support/BetterDiscord/plugins</code>.</li>
+        <li>Enable MessageLoggerFix in BetterDiscord’s plugin settings. Capture remains off until you explicitly enable it.</li>
+        <li>To stop collecting, disable capture. To remove retained events and snapshots, use <em>Clear logs and cache</em> and confirm. Delete any exported JSON separately if desired.</li>
+      </ol>
+      <p class="muted">See the <a href="https://docs.betterdiscord.app/plugins/introduction/quick-start">official plugin-folder guide</a> for Windows and Linux locations. No automatic install, startup workflow, or deployment is included.</p>
+    </section>
+    <section class="card" id="review" aria-labelledby="review-title">
+      <h2 id="review-title">Evidence before mythology</h2>
+      <p><strong>18 tests passed · 10 September 2026.</strong> Seventeen source-contract checks and one mocked JavaScript lifecycle smoke cover edits, deletions, ghost pings, retention, bulk bounds, cleanup, and unavailable-dispatcher behavior.</p>
+      <pre><code>python3 -m unittest discover -s tests -v</code></pre>
+      <p class="muted">The runtime smoke needs Node.js or JavaScriptCore. These tests are not a live Discord compatibility test. No authenticated Discord session was inspected, no real messages were captured, and no end-user installation was performed in this review.</p>
+      <div class="receipt">
+        <p>Original plugin, README, license, and tests preserved unchanged. This page is a new September 2026 continuation; its glyphs are decoration, not a hidden instruction channel.</p>
+        <p><a href="https://github.com/lilyofashwood/messageloggerfix-review/blob/main/tests/test_source_contract.py">Source contracts</a> · <a href="https://github.com/lilyofashwood/messageloggerfix-review/blob/main/tests/test_runtime_behavior.py">Runtime smoke</a> · <a href="https://github.com/lilyofashwood/messageloggerfix-review/blob/main/LICENSE">MIT license</a></p>
+      </div>
+    </section>
+  </div>
+  <footer>☠︎ The local log is a record, not an oracle. · © 2026 lilyofashwood · Page prepared for private review. No public Pages deployment is configured here.</footer>
+</main>
+</body>
+</html>
