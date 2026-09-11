@@ -181,9 +181,9 @@ class PluginSourceContractTests(unittest.TestCase):
     def test_readme_leads_with_one_honest_pirate_note(self):
         opening = self.normalized_readme[:2500]
         for phrase in (
-            "pirate's note",
-            "loot is plaintext",
-            "if it sinks, it sinks",
+            "pirate’s note",
+            "loot stays in plaintext",
+            "capture begins at your command",
             "original clean-room",
             "single-file betterdiscord plugin",
         ):
