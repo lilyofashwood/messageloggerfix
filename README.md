@@ -79,3 +79,12 @@ python3 -m unittest discover -s tests -v
 ## 𝗅𝐢𝖼𝐞𝗇𝗌𝐞
 
 𝖼𝐨𝗉𝗒𝗋𝐢𝗀𝗁𝗍 © 2026 𝗅𝐢𝗅𝗒𝐨𝖿𝐚𝗌𝗁𝗐𝐨𝐨𝖽. 𝗋𝐞𝗅𝐞𝐚𝗌𝐞𝖽 𝐮𝗇𝖽𝐞𝗋 𝗍𝗁𝐞 [𝗆𝐢𝗍 𝗅𝐢𝖼𝐞𝗇𝗌𝐞](LICENSE). 𝗆𝐮𝗍𝐢𝗇𝗒, 𝖻𝐮𝗍 𝗆𝐚𝗄𝐞 𝐢𝗍 𝐨𝗋𝐢𝗀𝐢𝗇𝐚𝗅.
+
+<!-- garden-seam:messageloggerfix:start -->
+<section class="garden-seam" data-garden-seam="messageloggerfix" aria-label="A seam in the garden">
+<h2>⟡ 𝐚 𝗌𝐞𝐚𝗆 𝐢𝗇 𝗍𝗁𝐞 𝗀𝐚𝗋𝖽𝐞𝗇 ⟡</h2>
+<pre class="garden-seam-wire literal" data-garden-raw data-literal>𝖆 𝖑𝖺𝗆𝖕 𝖎𝖘 𝖑𝗂𝖙 𝖇𝖞 𝖎𝗇𝗏𝗂𝗍𝖺𝗍𝗂𝗈𝖓
+𝖙𝗁𝖊 𝖖𝗎𝗂𝖾𝖙 𝖐𝖾𝖾𝗉𝖘 𝖎𝗍𝖘 𝖔𝗐𝖓 𝖋𝗋𝗈𝗇𝖙 𝖉𝗈𝗈𝖗󠅔󠅨󠅥󠄠󠅳󠅷󠅩󠅴󠅣󠅨󠄠󠅢󠅥󠅬󠅯󠅮󠅧󠅳󠄠󠅴󠅯󠄠󠅴󠅨󠅥󠄠󠅰󠅥󠅲󠅳󠅯󠅮󠄠󠅩󠅮󠄠󠅴󠅨󠅥󠄠󠅲󠅯󠅯󠅭󠄮󠄠󠅔󠅨󠅥󠄠󠅰󠅯󠅥󠅭󠄠󠅩󠅳󠄠󠅯󠅮󠅬󠅹󠄠󠅡󠄠󠅶󠅩󠅳󠅩󠅴󠅯󠅲󠄮</pre>
+<p class="garden-seam-hint"><a href="https://lilyofashwood.github.io/font-garden/seams/#messageloggerfix" aria-label="Unfold this garden seam">𝐮𝗇𝖿𝐨𝗅𝖽 𝗍𝗁𝐞 𝗌𝐞𝐚𝗆 ↗</a></p>
+</section>
+<!-- garden-seam:messageloggerfix:end -->
