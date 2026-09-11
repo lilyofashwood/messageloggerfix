@@ -6,76 +6,98 @@
   <meta name="color-scheme" content="dark">
   <meta name="description" content="MessageLoggerFix: an opt-in local BetterDiscord message log, with explicit privacy and compatibility limits.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
-  <title>MessageLoggerFix · local records</title>
+  <title>𝗆𝐞𝗌𝗌𝐚𝗀𝐞𝗅𝐨𝗀𝗀𝐞𝗋𝖿𝐢𝗑 · 𝗅𝐨𝖼𝐚𝗅 𝗋𝐞𝖼𝐨𝗋𝖽𝗌</title>
   <style>
     :root{--ink:#f6edf8;--muted:#b8aabc;--line:#3c3042;--accent:#dda6ff;--panel:#17111d;--warning:#ffc8a6;color-scheme:dark;font-family:system-ui,sans-serif;background:#0b090e;color:var(--ink)}
     *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#2b153440,transparent 55%)}main{max-width:1040px;margin:auto;padding:48px 28px 72px}a{color:var(--accent);text-underline-offset:4px}a:hover{color:#fff}a:focus-visible{outline:2px solid var(--accent);outline-offset:5px;border-radius:3px}p,li{line-height:1.65}p{max-width:76ch}.eyebrow{color:var(--accent);font:12px ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase}.sigil{font-size:24px;color:var(--accent);margin:30px 0 15px}h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(38px,7vw,74px);line-height:1.04;letter-spacing:-.035em;margin:0 0 18px;overflow-wrap:anywhere}.intro{font-size:20px;color:var(--muted);max-width:58ch}.actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 40px}.button{padding:11px 17px;border:1px solid var(--line);border-radius:7px;text-decoration:none;background:var(--panel)}.button.primary{color:#1b0d24;background:var(--accent);border-color:var(--accent);font-weight:650}.warning{border:1px solid #785443;border-left:3px solid var(--warning);border-radius:8px;background:#241813;padding:20px 23px;margin:0 0 30px}.warning h2{color:var(--warning);margin-top:0}.warning p:last-child{margin-bottom:0}h2{font-family:Georgia,serif;font-weight:400;font-size:25px}h3{font-size:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:22px 24px;background:var(--panel);border:1px solid var(--line);border-radius:9px}.card h2{margin-top:0}.card p:last-child{margin-bottom:0}ul,ol{padding-left:22px}li+li{margin-top:9px}code{font-family:ui-monospace,monospace;font-size:.9em;overflow-wrap:anywhere;color:#ebcdf8}pre{padding:14px;border:1px solid var(--line);border-radius:6px;overflow:auto}.muted{color:var(--muted)}.receipt{margin-top:20px;padding-top:12px;border-top:1px solid var(--line)}footer{color:var(--muted);font-size:13px;margin-top:36px;padding-top:22px;border-top:1px solid var(--line)}@media(max-width:680px){main{padding:28px 18px 44px}.grid{grid-template-columns:1fr}.card{padding:18px}.intro{font-size:18px}}@media print{body{background:white;color:black}main{padding:0}.grid{display:block}.card,.warning{break-inside:avoid;background:none;border:1px solid #777;margin-bottom:15px}.actions{display:none}a,code,.muted,.intro,footer,.warning h2{color:inherit}}
     .grid>*{min-width:0}
+
+    /* A quiet ledger in the same night garden; no script or remote asset. */
+    :root{--ink:#efe6d8;--muted:#c0b1b6;--line:#ad8c6252;--accent:#dfbe89;--panel:#17151d;--warning:#e9b99b;background:#090c10}
+    body{background:radial-gradient(ellipse at 85% 0%,#56293838,transparent 46%),radial-gradient(ellipse at 0% 65%,#1d464130,transparent 50%),#090c10}
+    header{position:relative;padding-bottom:8px;margin-bottom:25px;border-bottom:1px solid #b08f5d63}
+    header::after{content:'⟢ ⸺ ✧';position:absolute;right:0;bottom:-13px;padding-left:16px;background:#0d0d14;color:#c5a273;letter-spacing:.2em}
+    h1{color:#e8cfa0;line-height:1.25;text-shadow:0 0 32px #be91a329}
+    h2,h3{color:#e1c698;line-height:1.45}
+    .eyebrow{text-transform:none;letter-spacing:.04em;line-height:1.8}
+    .sigil{color:#d9b99a}.intro{line-height:1.85}
+    .card{background:linear-gradient(140deg,#231b25c9,#10151bed);border-radius:3px 18px 3px 18px}
+    .warning{background:linear-gradient(120deg,#342125b3,#211b1ce6);border-color:#b68b6d78;border-left-color:var(--warning);border-radius:3px 16px}
+    .button{border-radius:3px 10px;line-height:1.7}
+    .button.primary{color:#231c23;background:#dfbe89}
+    .button:hover{border-color:#efd3a0;background:#372730}
+    .button.primary:hover{background:#efcfa0;color:#231c23}
+    p,li,a,.voice-visible{overflow-wrap:anywhere}
+    code{color:#bddcc8}pre{background:#0c1117;border-radius:3px 12px}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    @media(max-width:680px){h1{font-size:clamp(30px,8vw,46px);line-height:1.35}.intro{font-size:17px}.actions{gap:10px}.button{padding:11px 13px}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+    @media print{body{background:white;color:black}header::after{background:white;color:black}h1,h2,h3,code,.sigil,.eyebrow,.warning h2{color:black}.card,.warning,pre{background:none}.voice-visible{text-shadow:none}}
   </style>
 </head>
 <body>
 <main>
   <header>
-    <p class="eyebrow">lilyofashwood / source companion / v1.0.0</p>
+    <p class="eyebrow"><span class="voice-visible" aria-hidden="true">𝗅𝐢𝗅𝗒𝐨𝖿𝐚𝗌𝗁𝗐𝐨𝐨𝖽 / 𝗌𝐨𝐮𝗋𝖼𝐞 𝖼𝐨𝗆𝗉𝐚𝗇𝐢𝐨𝗇 / 𝗏1.0.0</span><span class="sr-only">lilyofashwood / source companion / v1.0.0</span></p>
     <p class="sigil" aria-label="Mutiny edition">☠︎ 𝗆𝐮𝗍𝐢𝗇𝗒 𝐞𝖽𝐢𝗍𝐢𝐨𝗇 ☠︎</p>
-    <h1>MessageLoggerFix</h1>
-    <p class="intro">A small local black box for edits, deletions, and ghost pings. The record only knows what this client actually saw.</p>
+    <h1><span class="voice-visible" aria-hidden="true">𝗆𝐞𝗌𝗌𝐚𝗀𝐞𝗅𝐨𝗀𝗀𝐞𝗋𝖿𝐢𝗑</span><span class="sr-only">MessageLoggerFix</span></h1>
+    <p class="intro"><span class="voice-visible" aria-hidden="true">𝐚 𝗌𝗆𝐚𝗅𝗅 𝗅𝐨𝖼𝐚𝗅 𝖻𝗅𝐚𝖼𝗄 𝖻𝐨𝗑 𝖿𝐨𝗋 𝐞𝖽𝐢𝗍𝗌, 𝖽𝐞𝗅𝐞𝗍𝐢𝐨𝗇𝗌, 𝐚𝗇𝖽 𝗀𝗁𝐨𝗌𝗍 𝗉𝐢𝗇𝗀𝗌. 𝗍𝗁𝐞 𝗋𝐞𝖼𝐨𝗋𝖽 𝐨𝗇𝗅𝗒 𝗄𝗇𝐨𝗐𝗌 𝗐𝗁𝐚𝗍 𝗍𝗁𝐢𝗌 𝖼𝗅𝐢𝐞𝗇𝗍 𝐚𝖼𝗍𝐮𝐚𝗅𝗅𝗒 𝗌𝐚𝗐.</span><span class="sr-only">A small local black box for edits, deletions, and ghost pings. The record only knows what this client actually saw.</span></p>
     <nav class="actions" aria-label="Project files">
-      <a class="button primary" href="https://github.com/lilyofashwood/messageloggerfix/blob/main/messageloggerfix.plugin.js">Get plugin source on GitHub</a>
-      <a class="button" href="https://github.com/lilyofashwood/messageloggerfix/blob/main/README.md">Read the original README</a>
-      <a class="button" href="#review">Review the evidence</a>
+      <a class="button primary" href="https://github.com/lilyofashwood/messageloggerfix/blob/main/messageloggerfix.plugin.js"><span class="voice-visible" aria-hidden="true">𝗀𝐞𝗍 𝗉𝗅𝐮𝗀𝐢𝗇 𝗌𝐨𝐮𝗋𝖼𝐞 𝐨𝗇 𝗀𝐢𝗍𝗁𝐮𝖻</span><span class="sr-only">Get plugin source on GitHub</span></a>
+      <a class="button" href="https://github.com/lilyofashwood/messageloggerfix/blob/main/README.md"><span class="voice-visible" aria-hidden="true">𝗋𝐞𝐚𝖽 𝗍𝗁𝐞 𝐨𝗋𝐢𝗀𝐢𝗇𝐚𝗅 𝗋𝐞𝐚𝖽𝗆𝐞</span><span class="sr-only">Read the original README</span></a>
+      <a class="button" href="#review"><span class="voice-visible" aria-hidden="true">𝗋𝐞𝗏𝐢𝐞𝗐 𝗍𝗁𝐞 𝐞𝗏𝐢𝖽𝐞𝗇𝖼𝐞</span><span class="sr-only">Review the evidence</span></a>
     </nav>
   </header>
   <aside class="warning" aria-labelledby="privacy-title">
-    <h2 id="privacy-title">The loot is plaintext.</h2>
-    <p>Enabling capture retains message text, including words someone later edits or deletes, on this computer. Local does not mean encrypted or harmless. Get permission from the people whose messages you retain; disabling capture does not erase existing logs or exported files.</p>
-    <p>BetterDiscord’s <a href="https://docs.betterdiscord.app/plugins/publishing/guidelines">current plugin guidelines</a> explicitly disallow message logging and access to deleted messages. This is an independent plugin, <strong>not an approved BetterDiscord addon</strong>. Account and compatibility risks remain; source publication does not remove them.</p>
+    <h2 id="privacy-title"><span class="voice-visible" aria-hidden="true">𝗍𝗁𝐞 𝗅𝐨𝐨𝗍 𝐢𝗌 𝗉𝗅𝐚𝐢𝗇𝗍𝐞𝗑𝗍.</span><span class="sr-only">The loot is plaintext.</span></h2>
+    <p><span class="voice-visible" aria-hidden="true">𝐞𝗇𝐚𝖻𝗅𝐢𝗇𝗀 𝖼𝐚𝗉𝗍𝐮𝗋𝐞 𝗋𝐞𝗍𝐚𝐢𝗇𝗌 𝗆𝐞𝗌𝗌𝐚𝗀𝐞 𝗍𝐞𝗑𝗍, 𝐢𝗇𝖼𝗅𝐮𝖽𝐢𝗇𝗀 𝗐𝐨𝗋𝖽𝗌 𝗌𝐨𝗆𝐞𝐨𝗇𝐞 𝗅𝐚𝗍𝐞𝗋 𝐞𝖽𝐢𝗍𝗌 𝐨𝗋 𝖽𝐞𝗅𝐞𝗍𝐞𝗌, 𝐨𝗇 𝗍𝗁𝐢𝗌 𝖼𝐨𝗆𝗉𝐮𝗍𝐞𝗋. 𝗅𝐨𝖼𝐚𝗅 𝖽𝐨𝐞𝗌 𝗇𝐨𝗍 𝗆𝐞𝐚𝗇 𝐞𝗇𝖼𝗋𝗒𝗉𝗍𝐞𝖽 𝐨𝗋 𝗁𝐚𝗋𝗆𝗅𝐞𝗌𝗌. 𝗀𝐞𝗍 𝗉𝐞𝗋𝗆𝐢𝗌𝗌𝐢𝐨𝗇 𝖿𝗋𝐨𝗆 𝗍𝗁𝐞 𝗉𝐞𝐨𝗉𝗅𝐞 𝗐𝗁𝐨𝗌𝐞 𝗆𝐞𝗌𝗌𝐚𝗀𝐞𝗌 𝗒𝐨𝐮 𝗋𝐞𝗍𝐚𝐢𝗇; 𝖽𝐢𝗌𝐚𝖻𝗅𝐢𝗇𝗀 𝖼𝐚𝗉𝗍𝐮𝗋𝐞 𝖽𝐨𝐞𝗌 𝗇𝐨𝗍 𝐞𝗋𝐚𝗌𝐞 𝐞𝗑𝐢𝗌𝗍𝐢𝗇𝗀 𝗅𝐨𝗀𝗌 𝐨𝗋 𝐞𝗑𝗉𝐨𝗋𝗍𝐞𝖽 𝖿𝐢𝗅𝐞𝗌.</span><span class="sr-only">Enabling capture retains message text, including words someone later edits or deletes, on this computer. Local does not mean encrypted or harmless. Get permission from the people whose messages you retain; disabling capture does not erase existing logs or exported files.</span></p>
+    <p><span class="voice-visible" aria-hidden="true">𝖻𝐞𝗍𝗍𝐞𝗋𝖽𝐢𝗌𝖼𝐨𝗋𝖽’𝗌</span><span class="sr-only">BetterDiscord’s</span> <a href="https://docs.betterdiscord.app/plugins/publishing/guidelines"><span class="voice-visible" aria-hidden="true">𝖼𝐮𝗋𝗋𝐞𝗇𝗍 𝗉𝗅𝐮𝗀𝐢𝗇 𝗀𝐮𝐢𝖽𝐞𝗅𝐢𝗇𝐞𝗌</span><span class="sr-only">current plugin guidelines</span></a> <span class="voice-visible" aria-hidden="true">𝐞𝗑𝗉𝗅𝐢𝖼𝐢𝗍𝗅𝗒 𝖽𝐢𝗌𝐚𝗅𝗅𝐨𝗐 𝗆𝐞𝗌𝗌𝐚𝗀𝐞 𝗅𝐨𝗀𝗀𝐢𝗇𝗀 𝐚𝗇𝖽 𝐚𝖼𝖼𝐞𝗌𝗌 𝗍𝐨 𝖽𝐞𝗅𝐞𝗍𝐞𝖽 𝗆𝐞𝗌𝗌𝐚𝗀𝐞𝗌. 𝗍𝗁𝐢𝗌 𝐢𝗌 𝐚𝗇 𝐢𝗇𝖽𝐞𝗉𝐞𝗇𝖽𝐞𝗇𝗍 𝗉𝗅𝐮𝗀𝐢𝗇,</span><span class="sr-only">explicitly disallow message logging and access to deleted messages. This is an independent plugin,</span> <strong><span class="voice-visible" aria-hidden="true">𝗇𝐨𝗍 𝐚𝗇 𝐚𝗉𝗉𝗋𝐨𝗏𝐞𝖽 𝖻𝐞𝗍𝗍𝐞𝗋𝖽𝐢𝗌𝖼𝐨𝗋𝖽 𝐚𝖽𝖽𝐨𝗇</span><span class="sr-only">not an approved BetterDiscord addon</span></strong><span class="voice-visible" aria-hidden="true">. 𝐚𝖼𝖼𝐨𝐮𝗇𝗍 𝐚𝗇𝖽 𝖼𝐨𝗆𝗉𝐚𝗍𝐢𝖻𝐢𝗅𝐢𝗍𝗒 𝗋𝐢𝗌𝗄𝗌 𝗋𝐞𝗆𝐚𝐢𝗇; 𝗌𝐨𝐮𝗋𝖼𝐞 𝗉𝐮𝖻𝗅𝐢𝖼𝐚𝗍𝐢𝐨𝗇 𝖽𝐨𝐞𝗌 𝗇𝐨𝗍 𝗋𝐞𝗆𝐨𝗏𝐞 𝗍𝗁𝐞𝗆.</span><span class="sr-only">. Account and compatibility risks remain; source publication does not remove them.</span></p>
   </aside>
   <div class="grid">
     <section class="card" aria-labelledby="record-title">
-      <h2 id="record-title">What the record contains</h2>
+      <h2 id="record-title"><span class="voice-visible" aria-hidden="true">𝗐𝗁𝐚𝗍 𝗍𝗁𝐞 𝗋𝐞𝖼𝐨𝗋𝖽 𝖼𝐨𝗇𝗍𝐚𝐢𝗇𝗌</span><span class="sr-only">What the record contains</span></h2>
       <ul>
-        <li>Capture starts off. A separate explicit choice enables it.</li>
-        <li>Edits require a prior cached text snapshot and an actual content change.</li>
-        <li>A missing deleted message becomes an honest tombstone, not invented recovered text.</li>
-        <li>Direct mentions of the signed-in user identify deleted ghost pings.</li>
-        <li>Local search, event filters, JSON export, and confirmed clearing; four panel skins.</li>
+        <li><span class="voice-visible" aria-hidden="true">𝖼𝐚𝗉𝗍𝐮𝗋𝐞 𝗌𝗍𝐚𝗋𝗍𝗌 𝐨𝖿𝖿. 𝐚 𝗌𝐞𝗉𝐚𝗋𝐚𝗍𝐞 𝐞𝗑𝗉𝗅𝐢𝖼𝐢𝗍 𝖼𝗁𝐨𝐢𝖼𝐞 𝐞𝗇𝐚𝖻𝗅𝐞𝗌 𝐢𝗍.</span><span class="sr-only">Capture starts off. A separate explicit choice enables it.</span></li>
+        <li><span class="voice-visible" aria-hidden="true">𝐞𝖽𝐢𝗍𝗌 𝗋𝐞𝗊𝐮𝐢𝗋𝐞 𝐚 𝗉𝗋𝐢𝐨𝗋 𝖼𝐚𝖼𝗁𝐞𝖽 𝗍𝐞𝗑𝗍 𝗌𝗇𝐚𝗉𝗌𝗁𝐨𝗍 𝐚𝗇𝖽 𝐚𝗇 𝐚𝖼𝗍𝐮𝐚𝗅 𝖼𝐨𝗇𝗍𝐞𝗇𝗍 𝖼𝗁𝐚𝗇𝗀𝐞.</span><span class="sr-only">Edits require a prior cached text snapshot and an actual content change.</span></li>
+        <li><span class="voice-visible" aria-hidden="true">𝐚 𝗆𝐢𝗌𝗌𝐢𝗇𝗀 𝖽𝐞𝗅𝐞𝗍𝐞𝖽 𝗆𝐞𝗌𝗌𝐚𝗀𝐞 𝖻𝐞𝖼𝐨𝗆𝐞𝗌 𝐚𝗇 𝗁𝐨𝗇𝐞𝗌𝗍 𝗍𝐨𝗆𝖻𝗌𝗍𝐨𝗇𝐞, 𝗇𝐨𝗍 𝐢𝗇𝗏𝐞𝗇𝗍𝐞𝖽 𝗋𝐞𝖼𝐨𝗏𝐞𝗋𝐞𝖽 𝗍𝐞𝗑𝗍.</span><span class="sr-only">A missing deleted message becomes an honest tombstone, not invented recovered text.</span></li>
+        <li><span class="voice-visible" aria-hidden="true">𝖽𝐢𝗋𝐞𝖼𝗍 𝗆𝐞𝗇𝗍𝐢𝐨𝗇𝗌 𝐨𝖿 𝗍𝗁𝐞 𝗌𝐢𝗀𝗇𝐞𝖽-𝐢𝗇 𝐮𝗌𝐞𝗋 𝐢𝖽𝐞𝗇𝗍𝐢𝖿𝗒 𝖽𝐞𝗅𝐞𝗍𝐞𝖽 𝗀𝗁𝐨𝗌𝗍 𝗉𝐢𝗇𝗀𝗌.</span><span class="sr-only">Direct mentions of the signed-in user identify deleted ghost pings.</span></li>
+        <li><span class="voice-visible" aria-hidden="true">𝗅𝐨𝖼𝐚𝗅 𝗌𝐞𝐚𝗋𝖼𝗁, 𝐞𝗏𝐞𝗇𝗍 𝖿𝐢𝗅𝗍𝐞𝗋𝗌, 𝗃𝗌𝐨𝗇 𝐞𝗑𝗉𝐨𝗋𝗍, 𝐚𝗇𝖽 𝖼𝐨𝗇𝖿𝐢𝗋𝗆𝐞𝖽 𝖼𝗅𝐞𝐚𝗋𝐢𝗇𝗀; 𝖿𝐨𝐮𝗋 𝗉𝐚𝗇𝐞𝗅 𝗌𝗄𝐢𝗇𝗌.</span><span class="sr-only">Local search, event filters, JSON export, and confirmed clearing; four panel skins.</span></li>
       </ul>
-      <p class="muted">The plugin has no network requests, telemetry, remote assets, updater, or plugin-library dependency. This page has no scripts and does not run the plugin.</p>
+      <p class="muted"><span class="voice-visible" aria-hidden="true">𝗍𝗁𝐞 𝗉𝗅𝐮𝗀𝐢𝗇 𝗁𝐚𝗌 𝗇𝐨 𝗇𝐞𝗍𝗐𝐨𝗋𝗄 𝗋𝐞𝗊𝐮𝐞𝗌𝗍𝗌, 𝗍𝐞𝗅𝐞𝗆𝐞𝗍𝗋𝗒, 𝗋𝐞𝗆𝐨𝗍𝐞 𝐚𝗌𝗌𝐞𝗍𝗌, 𝐮𝗉𝖽𝐚𝗍𝐞𝗋, 𝐨𝗋 𝗉𝗅𝐮𝗀𝐢𝗇-𝗅𝐢𝖻𝗋𝐚𝗋𝗒 𝖽𝐞𝗉𝐞𝗇𝖽𝐞𝗇𝖼𝗒. 𝗍𝗁𝐢𝗌 𝗉𝐚𝗀𝐞 𝗁𝐚𝗌 𝗇𝐨 𝗌𝖼𝗋𝐢𝗉𝗍𝗌 𝐚𝗇𝖽 𝖽𝐨𝐞𝗌 𝗇𝐨𝗍 𝗋𝐮𝗇 𝗍𝗁𝐞 𝗉𝗅𝐮𝗀𝐢𝗇.</span><span class="sr-only">The plugin has no network requests, telemetry, remote assets, updater, or plugin-library dependency. This page has no scripts and does not run the plugin.</span></p>
     </section>
     <section class="card" aria-labelledby="limits-title">
-      <h2 id="limits-title">What the record cannot promise</h2>
+      <h2 id="limits-title"><span class="voice-visible" aria-hidden="true">𝗐𝗁𝐚𝗍 𝗍𝗁𝐞 𝗋𝐞𝖼𝐨𝗋𝖽 𝖼𝐚𝗇𝗇𝐨𝗍 𝗉𝗋𝐨𝗆𝐢𝗌𝐞</span><span class="sr-only">What the record cannot promise</span></h2>
       <ul>
-        <li>No recovery of messages the client never observed while capture was active.</li>
-        <li>Message text is clipped to 20,000 JavaScript string units; attachments and complete chat transcripts are not archived.</li>
-        <li>Defaults retain up to 1,000 events and 1,000 cached snapshots for 30 days. Oldest records are pruned to a 4 MiB serialized storage budget.</li>
-        <li>Age pruning runs during startup, mutations, or saves; it is not a secure-erasure timer.</li>
-        <li>Discord’s internal event interface can change. Missing subscriptions fail closed and report capture unavailable.</li>
+        <li><span class="voice-visible" aria-hidden="true">𝗇𝐨 𝗋𝐞𝖼𝐨𝗏𝐞𝗋𝗒 𝐨𝖿 𝗆𝐞𝗌𝗌𝐚𝗀𝐞𝗌 𝗍𝗁𝐞 𝖼𝗅𝐢𝐞𝗇𝗍 𝗇𝐞𝗏𝐞𝗋 𝐨𝖻𝗌𝐞𝗋𝗏𝐞𝖽 𝗐𝗁𝐢𝗅𝐞 𝖼𝐚𝗉𝗍𝐮𝗋𝐞 𝗐𝐚𝗌 𝐚𝖼𝗍𝐢𝗏𝐞.</span><span class="sr-only">No recovery of messages the client never observed while capture was active.</span></li>
+        <li><span class="voice-visible" aria-hidden="true">𝗆𝐞𝗌𝗌𝐚𝗀𝐞 𝗍𝐞𝗑𝗍 𝐢𝗌 𝖼𝗅𝐢𝗉𝗉𝐞𝖽 𝗍𝐨 20,000 𝗃𝐚𝗏𝐚𝗌𝖼𝗋𝐢𝗉𝗍 𝗌𝗍𝗋𝐢𝗇𝗀 𝐮𝗇𝐢𝗍𝗌; 𝐚𝗍𝗍𝐚𝖼𝗁𝗆𝐞𝗇𝗍𝗌 𝐚𝗇𝖽 𝖼𝐨𝗆𝗉𝗅𝐞𝗍𝐞 𝖼𝗁𝐚𝗍 𝗍𝗋𝐚𝗇𝗌𝖼𝗋𝐢𝗉𝗍𝗌 𝐚𝗋𝐞 𝗇𝐨𝗍 𝐚𝗋𝖼𝗁𝐢𝗏𝐞𝖽.</span><span class="sr-only">Message text is clipped to 20,000 JavaScript string units; attachments and complete chat transcripts are not archived.</span></li>
+        <li><span class="voice-visible" aria-hidden="true">𝖽𝐞𝖿𝐚𝐮𝗅𝗍𝗌 𝗋𝐞𝗍𝐚𝐢𝗇 𝐮𝗉 𝗍𝐨 1,000 𝐞𝗏𝐞𝗇𝗍𝗌 𝐚𝗇𝖽 1,000 𝖼𝐚𝖼𝗁𝐞𝖽 𝗌𝗇𝐚𝗉𝗌𝗁𝐨𝗍𝗌 𝖿𝐨𝗋 30 𝖽𝐚𝗒𝗌. 𝐨𝗅𝖽𝐞𝗌𝗍 𝗋𝐞𝖼𝐨𝗋𝖽𝗌 𝐚𝗋𝐞 𝗉𝗋𝐮𝗇𝐞𝖽 𝗍𝐨 𝐚 4 𝗆𝐢𝖻 𝗌𝐞𝗋𝐢𝐚𝗅𝐢𝗓𝐞𝖽 𝗌𝗍𝐨𝗋𝐚𝗀𝐞 𝖻𝐮𝖽𝗀𝐞𝗍.</span><span class="sr-only">Defaults retain up to 1,000 events and 1,000 cached snapshots for 30 days. Oldest records are pruned to a 4 MiB serialized storage budget.</span></li>
+        <li><span class="voice-visible" aria-hidden="true">𝐚𝗀𝐞 𝗉𝗋𝐮𝗇𝐢𝗇𝗀 𝗋𝐮𝗇𝗌 𝖽𝐮𝗋𝐢𝗇𝗀 𝗌𝗍𝐚𝗋𝗍𝐮𝗉, 𝗆𝐮𝗍𝐚𝗍𝐢𝐨𝗇𝗌, 𝐨𝗋 𝗌𝐚𝗏𝐞𝗌; 𝐢𝗍 𝐢𝗌 𝗇𝐨𝗍 𝐚 𝗌𝐞𝖼𝐮𝗋𝐞-𝐞𝗋𝐚𝗌𝐮𝗋𝐞 𝗍𝐢𝗆𝐞𝗋.</span><span class="sr-only">Age pruning runs during startup, mutations, or saves; it is not a secure-erasure timer.</span></li>
+        <li><span class="voice-visible" aria-hidden="true">𝖽𝐢𝗌𝖼𝐨𝗋𝖽’𝗌 𝐢𝗇𝗍𝐞𝗋𝗇𝐚𝗅 𝐞𝗏𝐞𝗇𝗍 𝐢𝗇𝗍𝐞𝗋𝖿𝐚𝖼𝐞 𝖼𝐚𝗇 𝖼𝗁𝐚𝗇𝗀𝐞. 𝗆𝐢𝗌𝗌𝐢𝗇𝗀 𝗌𝐮𝖻𝗌𝖼𝗋𝐢𝗉𝗍𝐢𝐨𝗇𝗌 𝖿𝐚𝐢𝗅 𝖼𝗅𝐨𝗌𝐞𝖽 𝐚𝗇𝖽 𝗋𝐞𝗉𝐨𝗋𝗍 𝖼𝐚𝗉𝗍𝐮𝗋𝐞 𝐮𝗇𝐚𝗏𝐚𝐢𝗅𝐚𝖻𝗅𝐞.</span><span class="sr-only">Discord’s internal event interface can change. Missing subscriptions fail closed and report capture unavailable.</span></li>
       </ul>
     </section>
     <section class="card" aria-labelledby="install-title">
-      <h2 id="install-title">Manual installation, after review</h2>
-      <p>No account or application is changed by opening this page.</p>
+      <h2 id="install-title"><span class="voice-visible" aria-hidden="true">𝗆𝐚𝗇𝐮𝐚𝗅 𝐢𝗇𝗌𝗍𝐚𝗅𝗅𝐚𝗍𝐢𝐨𝗇, 𝐚𝖿𝗍𝐞𝗋 𝗋𝐞𝗏𝐢𝐞𝗐</span><span class="sr-only">Manual installation, after review</span></h2>
+      <p><span class="voice-visible" aria-hidden="true">𝗇𝐨 𝐚𝖼𝖼𝐨𝐮𝗇𝗍 𝐨𝗋 𝐚𝗉𝗉𝗅𝐢𝖼𝐚𝗍𝐢𝐨𝗇 𝐢𝗌 𝖼𝗁𝐚𝗇𝗀𝐞𝖽 𝖻𝗒 𝐨𝗉𝐞𝗇𝐢𝗇𝗀 𝗍𝗁𝐢𝗌 𝗉𝐚𝗀𝐞.</span><span class="sr-only">No account or application is changed by opening this page.</span></p>
       <ol>
-        <li>Review the source, privacy implications, and platform restrictions above.</li>
-        <li>With BetterDiscord already installed, place <code>messageloggerfix.plugin.js</code> in its plugins folder. On macOS: <code>~/Library/Application Support/BetterDiscord/plugins</code>.</li>
-        <li>Enable MessageLoggerFix in BetterDiscord’s plugin settings. Capture remains off until you explicitly enable it.</li>
-        <li>To stop collecting, disable capture. To remove retained events and snapshots, use <em>Clear logs and cache</em> and confirm. Delete any exported JSON separately if desired.</li>
+        <li><span class="voice-visible" aria-hidden="true">𝗋𝐞𝗏𝐢𝐞𝗐 𝗍𝗁𝐞 𝗌𝐨𝐮𝗋𝖼𝐞, 𝗉𝗋𝐢𝗏𝐚𝖼𝗒 𝐢𝗆𝗉𝗅𝐢𝖼𝐚𝗍𝐢𝐨𝗇𝗌, 𝐚𝗇𝖽 𝗉𝗅𝐚𝗍𝖿𝐨𝗋𝗆 𝗋𝐞𝗌𝗍𝗋𝐢𝖼𝗍𝐢𝐨𝗇𝗌 𝐚𝖻𝐨𝗏𝐞.</span><span class="sr-only">Review the source, privacy implications, and platform restrictions above.</span></li>
+        <li><span class="voice-visible" aria-hidden="true">𝗐𝐢𝗍𝗁 𝖻𝐞𝗍𝗍𝐞𝗋𝖽𝐢𝗌𝖼𝐨𝗋𝖽 𝐚𝗅𝗋𝐞𝐚𝖽𝗒 𝐢𝗇𝗌𝗍𝐚𝗅𝗅𝐞𝖽, 𝗉𝗅𝐚𝖼𝐞</span><span class="sr-only">With BetterDiscord already installed, place</span> <code>messageloggerfix.plugin.js</code> <span class="voice-visible" aria-hidden="true">𝐢𝗇 𝐢𝗍𝗌 𝗉𝗅𝐮𝗀𝐢𝗇𝗌 𝖿𝐨𝗅𝖽𝐞𝗋. 𝐨𝗇 𝗆𝐚𝖼𝐨𝗌:</span><span class="sr-only">in its plugins folder. On macOS:</span> <code>~/Library/Application Support/BetterDiscord/plugins</code>.</li>
+        <li><span class="voice-visible" aria-hidden="true">𝐞𝗇𝐚𝖻𝗅𝐞 𝗆𝐞𝗌𝗌𝐚𝗀𝐞𝗅𝐨𝗀𝗀𝐞𝗋𝖿𝐢𝗑 𝐢𝗇 𝖻𝐞𝗍𝗍𝐞𝗋𝖽𝐢𝗌𝖼𝐨𝗋𝖽’𝗌 𝗉𝗅𝐮𝗀𝐢𝗇 𝗌𝐞𝗍𝗍𝐢𝗇𝗀𝗌. 𝖼𝐚𝗉𝗍𝐮𝗋𝐞 𝗋𝐞𝗆𝐚𝐢𝗇𝗌 𝐨𝖿𝖿 𝐮𝗇𝗍𝐢𝗅 𝗒𝐨𝐮 𝐞𝗑𝗉𝗅𝐢𝖼𝐢𝗍𝗅𝗒 𝐞𝗇𝐚𝖻𝗅𝐞 𝐢𝗍.</span><span class="sr-only">Enable MessageLoggerFix in BetterDiscord’s plugin settings. Capture remains off until you explicitly enable it.</span></li>
+        <li><span class="voice-visible" aria-hidden="true">𝗍𝐨 𝗌𝗍𝐨𝗉 𝖼𝐨𝗅𝗅𝐞𝖼𝗍𝐢𝗇𝗀, 𝖽𝐢𝗌𝐚𝖻𝗅𝐞 𝖼𝐚𝗉𝗍𝐮𝗋𝐞. 𝗍𝐨 𝗋𝐞𝗆𝐨𝗏𝐞 𝗋𝐞𝗍𝐚𝐢𝗇𝐞𝖽 𝐞𝗏𝐞𝗇𝗍𝗌 𝐚𝗇𝖽 𝗌𝗇𝐚𝗉𝗌𝗁𝐨𝗍𝗌, 𝐮𝗌𝐞</span><span class="sr-only">To stop collecting, disable capture. To remove retained events and snapshots, use</span> <em><span class="voice-visible" aria-hidden="true">𝖼𝗅𝐞𝐚𝗋 𝗅𝐨𝗀𝗌 𝐚𝗇𝖽 𝖼𝐚𝖼𝗁𝐞</span><span class="sr-only">Clear logs and cache</span></em> <span class="voice-visible" aria-hidden="true">𝐚𝗇𝖽 𝖼𝐨𝗇𝖿𝐢𝗋𝗆. 𝖽𝐞𝗅𝐞𝗍𝐞 𝐚𝗇𝗒 𝐞𝗑𝗉𝐨𝗋𝗍𝐞𝖽 𝗃𝗌𝐨𝗇 𝗌𝐞𝗉𝐚𝗋𝐚𝗍𝐞𝗅𝗒 𝐢𝖿 𝖽𝐞𝗌𝐢𝗋𝐞𝖽.</span><span class="sr-only">and confirm. Delete any exported JSON separately if desired.</span></li>
       </ol>
-      <p class="muted">See the <a href="https://docs.betterdiscord.app/plugins/introduction/quick-start">official plugin-folder guide</a> for Windows and Linux locations. No automatic install, startup workflow, or deployment is included.</p>
+      <p class="muted"><span class="voice-visible" aria-hidden="true">𝗌𝐞𝐞 𝗍𝗁𝐞</span><span class="sr-only">See the</span> <a href="https://docs.betterdiscord.app/plugins/introduction/quick-start"><span class="voice-visible" aria-hidden="true">𝐨𝖿𝖿𝐢𝖼𝐢𝐚𝗅 𝗉𝗅𝐮𝗀𝐢𝗇-𝖿𝐨𝗅𝖽𝐞𝗋 𝗀𝐮𝐢𝖽𝐞</span><span class="sr-only">official plugin-folder guide</span></a> <span class="voice-visible" aria-hidden="true">𝖿𝐨𝗋 𝗐𝐢𝗇𝖽𝐨𝗐𝗌 𝐚𝗇𝖽 𝗅𝐢𝗇𝐮𝗑 𝗅𝐨𝖼𝐚𝗍𝐢𝐨𝗇𝗌. 𝗇𝐨 𝐚𝐮𝗍𝐨𝗆𝐚𝗍𝐢𝖼 𝐢𝗇𝗌𝗍𝐚𝗅𝗅, 𝗌𝗍𝐚𝗋𝗍𝐮𝗉 𝗐𝐨𝗋𝗄𝖿𝗅𝐨𝗐, 𝐨𝗋 𝖽𝐞𝗉𝗅𝐨𝗒𝗆𝐞𝗇𝗍 𝐢𝗌 𝐢𝗇𝖼𝗅𝐮𝖽𝐞𝖽.</span><span class="sr-only">for Windows and Linux locations. No automatic install, startup workflow, or deployment is included.</span></p>
     </section>
     <section class="card" id="review" aria-labelledby="review-title">
-      <h2 id="review-title">Evidence before mythology</h2>
-      <p><strong>18 tests passed · 10 September 2026.</strong> Seventeen source-contract checks and one mocked JavaScript lifecycle smoke cover edits, deletions, ghost pings, retention, bulk bounds, cleanup, and unavailable-dispatcher behavior.</p>
+      <h2 id="review-title"><span class="voice-visible" aria-hidden="true">𝐞𝗏𝐢𝖽𝐞𝗇𝖼𝐞 𝖻𝐞𝖿𝐨𝗋𝐞 𝗆𝗒𝗍𝗁𝐨𝗅𝐨𝗀𝗒</span><span class="sr-only">Evidence before mythology</span></h2>
+      <p><strong><span class="voice-visible" aria-hidden="true">18 𝗍𝐞𝗌𝗍𝗌 𝗉𝐚𝗌𝗌𝐞𝖽 · 10 𝗌𝐞𝗉𝗍𝐞𝗆𝖻𝐞𝗋 2026.</span><span class="sr-only">18 tests passed · 10 September 2026.</span></strong> <span class="voice-visible" aria-hidden="true">𝗌𝐞𝗏𝐞𝗇𝗍𝐞𝐞𝗇 𝗌𝐨𝐮𝗋𝖼𝐞-𝖼𝐨𝗇𝗍𝗋𝐚𝖼𝗍 𝖼𝗁𝐞𝖼𝗄𝗌 𝐚𝗇𝖽 𝐨𝗇𝐞 𝗆𝐨𝖼𝗄𝐞𝖽 𝗃𝐚𝗏𝐚𝗌𝖼𝗋𝐢𝗉𝗍 𝗅𝐢𝖿𝐞𝖼𝗒𝖼𝗅𝐞 𝗌𝗆𝐨𝗄𝐞 𝖼𝐨𝗏𝐞𝗋 𝐞𝖽𝐢𝗍𝗌, 𝖽𝐞𝗅𝐞𝗍𝐢𝐨𝗇𝗌, 𝗀𝗁𝐨𝗌𝗍 𝗉𝐢𝗇𝗀𝗌, 𝗋𝐞𝗍𝐞𝗇𝗍𝐢𝐨𝗇, 𝖻𝐮𝗅𝗄 𝖻𝐨𝐮𝗇𝖽𝗌, 𝖼𝗅𝐞𝐚𝗇𝐮𝗉, 𝐚𝗇𝖽 𝐮𝗇𝐚𝗏𝐚𝐢𝗅𝐚𝖻𝗅𝐞-𝖽𝐢𝗌𝗉𝐚𝗍𝖼𝗁𝐞𝗋 𝖻𝐞𝗁𝐚𝗏𝐢𝐨𝗋.</span><span class="sr-only">Seventeen source-contract checks and one mocked JavaScript lifecycle smoke cover edits, deletions, ghost pings, retention, bulk bounds, cleanup, and unavailable-dispatcher behavior.</span></p>
       <pre><code>python3 -m unittest discover -s tests -v</code></pre>
-      <p class="muted">The runtime smoke needs Node.js or JavaScriptCore. These tests are not a live Discord compatibility test. No authenticated Discord session was inspected, no real messages were captured, and no end-user installation was performed in this review.</p>
+      <p class="muted"><span class="voice-visible" aria-hidden="true">𝗍𝗁𝐞 𝗋𝐮𝗇𝗍𝐢𝗆𝐞 𝗌𝗆𝐨𝗄𝐞 𝗇𝐞𝐞𝖽𝗌 𝗇𝐨𝖽𝐞.𝗃𝗌 𝐨𝗋 𝗃𝐚𝗏𝐚𝗌𝖼𝗋𝐢𝗉𝗍𝖼𝐨𝗋𝐞. 𝗍𝗁𝐞𝗌𝐞 𝗍𝐞𝗌𝗍𝗌 𝐚𝗋𝐞 𝗇𝐨𝗍 𝐚 𝗅𝐢𝗏𝐞 𝖽𝐢𝗌𝖼𝐨𝗋𝖽 𝖼𝐨𝗆𝗉𝐚𝗍𝐢𝖻𝐢𝗅𝐢𝗍𝗒 𝗍𝐞𝗌𝗍. 𝗇𝐨 𝐚𝐮𝗍𝗁𝐞𝗇𝗍𝐢𝖼𝐚𝗍𝐞𝖽 𝖽𝐢𝗌𝖼𝐨𝗋𝖽 𝗌𝐞𝗌𝗌𝐢𝐨𝗇 𝗐𝐚𝗌 𝐢𝗇𝗌𝗉𝐞𝖼𝗍𝐞𝖽, 𝗇𝐨 𝗋𝐞𝐚𝗅 𝗆𝐞𝗌𝗌𝐚𝗀𝐞𝗌 𝗐𝐞𝗋𝐞 𝖼𝐚𝗉𝗍𝐮𝗋𝐞𝖽, 𝐚𝗇𝖽 𝗇𝐨 𝐞𝗇𝖽-𝐮𝗌𝐞𝗋 𝐢𝗇𝗌𝗍𝐚𝗅𝗅𝐚𝗍𝐢𝐨𝗇 𝗐𝐚𝗌 𝗉𝐞𝗋𝖿𝐨𝗋𝗆𝐞𝖽 𝐢𝗇 𝗍𝗁𝐢𝗌 𝗋𝐞𝗏𝐢𝐞𝗐.</span><span class="sr-only">The runtime smoke needs Node.js or JavaScriptCore. These tests are not a live Discord compatibility test. No authenticated Discord session was inspected, no real messages were captured, and no end-user installation was performed in this review.</span></p>
       <div class="receipt">
-        <p>Original plugin, README, license, and tests preserved unchanged. This page is a new September 2026 continuation; its glyphs are decoration, not a hidden instruction channel.</p>
-        <p><a href="https://github.com/lilyofashwood/messageloggerfix/blob/main/tests/test_source_contract.py">Source contracts</a> · <a href="https://github.com/lilyofashwood/messageloggerfix/blob/main/tests/test_runtime_behavior.py">Runtime smoke</a> · <a href="https://github.com/lilyofashwood/messageloggerfix/blob/main/LICENSE">MIT license</a></p>
+        <p><span class="voice-visible" aria-hidden="true">𝐨𝗋𝐢𝗀𝐢𝗇𝐚𝗅 𝗉𝗅𝐮𝗀𝐢𝗇, 𝗋𝐞𝐚𝖽𝗆𝐞, 𝗅𝐢𝖼𝐞𝗇𝗌𝐞, 𝐚𝗇𝖽 𝗍𝐞𝗌𝗍𝗌 𝗉𝗋𝐞𝗌𝐞𝗋𝗏𝐞𝖽 𝐮𝗇𝖼𝗁𝐚𝗇𝗀𝐞𝖽. 𝗍𝗁𝐢𝗌 𝗉𝐚𝗀𝐞 𝐢𝗌 𝐚 𝗇𝐞𝗐 𝗌𝐞𝗉𝗍𝐞𝗆𝖻𝐞𝗋 2026 𝖼𝐨𝗇𝗍𝐢𝗇𝐮𝐚𝗍𝐢𝐨𝗇; 𝐢𝗍𝗌 𝗀𝗅𝗒𝗉𝗁𝗌 𝐚𝗋𝐞 𝖽𝐞𝖼𝐨𝗋𝐚𝗍𝐢𝐨𝗇, 𝗇𝐨𝗍 𝐚 𝗁𝐢𝖽𝖽𝐞𝗇 𝐢𝗇𝗌𝗍𝗋𝐮𝖼𝗍𝐢𝐨𝗇 𝖼𝗁𝐚𝗇𝗇𝐞𝗅.</span><span class="sr-only">Original plugin, README, license, and tests preserved unchanged. This page is a new September 2026 continuation; its glyphs are decoration, not a hidden instruction channel.</span></p>
+        <p><a href="https://github.com/lilyofashwood/messageloggerfix/blob/main/tests/test_source_contract.py"><span class="voice-visible" aria-hidden="true">𝗌𝐨𝐮𝗋𝖼𝐞 𝖼𝐨𝗇𝗍𝗋𝐚𝖼𝗍𝗌</span><span class="sr-only">Source contracts</span></a> · <a href="https://github.com/lilyofashwood/messageloggerfix/blob/main/tests/test_runtime_behavior.py"><span class="voice-visible" aria-hidden="true">𝗋𝐮𝗇𝗍𝐢𝗆𝐞 𝗌𝗆𝐨𝗄𝐞</span><span class="sr-only">Runtime smoke</span></a> · <a href="https://github.com/lilyofashwood/messageloggerfix/blob/main/LICENSE"><span class="voice-visible" aria-hidden="true">𝗆𝐢𝗍 𝗅𝐢𝖼𝐞𝗇𝗌𝐞</span><span class="sr-only">MIT license</span></a></p>
       </div>
     </section>
   </div>
-  <footer>☠︎ The local log is a record, not an oracle. · © 2026 lilyofashwood · Source companion page. No new GitHub Pages deployment was performed for this continuation.</footer>
+  <footer><span class="voice-visible" aria-hidden="true">☠︎ 𝗍𝗁𝐞 𝗅𝐨𝖼𝐚𝗅 𝗅𝐨𝗀 𝐢𝗌 𝐚 𝗋𝐞𝖼𝐨𝗋𝖽, 𝗇𝐨𝗍 𝐚𝗇 𝐨𝗋𝐚𝖼𝗅𝐞. · © 2026 𝗅𝐢𝗅𝗒𝐨𝖿𝐚𝗌𝗁𝗐𝐨𝐨𝖽 · 𝗌𝐨𝐮𝗋𝖼𝐞 𝖼𝐨𝗆𝗉𝐚𝗇𝐢𝐨𝗇 𝗉𝐚𝗀𝐞. 𝗇𝐨 𝗇𝐞𝗐 𝗀𝐢𝗍𝗁𝐮𝖻 𝗉𝐚𝗀𝐞𝗌 𝖽𝐞𝗉𝗅𝐨𝗒𝗆𝐞𝗇𝗍 𝗐𝐚𝗌 𝗉𝐞𝗋𝖿𝐨𝗋𝗆𝐞𝖽 𝖿𝐨𝗋 𝗍𝗁𝐢𝗌 𝖼𝐨𝗇𝗍𝐢𝗇𝐮𝐚𝗍𝐢𝐨𝗇.</span><span class="sr-only">☠︎ The local log is a record, not an oracle. · © 2026 lilyofashwood · Source companion page. No new GitHub Pages deployment was performed for this continuation.</span></footer>
 </main>
 </body>
 </html>
